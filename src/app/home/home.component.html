@@ -1,0 +1,11 @@
+<app-product-search></app-product-search>
+<h2>Shop</h2>
+
+<div class="products-menu">
+  <a *ngFor="let product of products"
+      routerLink="/detail/{{product.id}}">
+      {{product.name}}
+  </a>
+</div>
+
+
