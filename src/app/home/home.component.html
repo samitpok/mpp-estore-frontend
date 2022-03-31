@@ -4,7 +4,8 @@
 <div class="products-menu">
   <a *ngFor="let product of products"
       routerLink="/detail/{{product.id}}">
-      {{product.name}}
+
+      {{product.name}} &#36;{{product.price}} <img [src]="product.imageurl" width="150">
   </a>
 </div>
 
