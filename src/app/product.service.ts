@@ -10,6 +10,9 @@ import { MessageService } from './message.service';
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
+  getAll() {
+    throw new Error('Method not implemented.');
+  }
 
   private productsUrl = 'api/products';  // URL to web api
 
