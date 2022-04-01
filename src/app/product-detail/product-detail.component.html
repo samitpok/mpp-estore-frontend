@@ -1,10 +1,68 @@
-<div *ngIf="product">
-  <h2>{{product.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{product.id}}</div>
-  <div>
-    <label for="hero-name">Product name: </label>
-    <input id="hero-name" [(ngModel)]="product.name" placeholder="product name"/>
+<html>
+  <head>
+  <style>
+  .container {
+    position: relative;
+  }
+  
+  .bottomright {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+    font-size: 18px;
+  }
+  
+  img { 
+    width: 40%;
+    height: auto;
+  }
+  </style>
+  </head>
+   <body>
+  
+  <h2>{{product?.name| uppercase}}</h2>
+  <p>Add some text to an image in the bottom right corner:</p>
+  
+  <div *ngIf="product">
+    
+    <img [src]=product.imageurl alt="image error" width="100" height="300">
+    
   </div>
-  <button type="button" (click)="goBack()">go back</button>
-  <button type="button" (click)="save()">save</button>
+  
+  </body>
+  </html>
+
+
+  <div *ngIf="product">
+   
+    <div><span>US $</span>{{product.price}}</div>
+    <div>
+  </div>
+   
+  
 </div>
+<style>.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button2 {background-color: #008CBA;} /* Blue */
+.button3 {background-color: #f44336;} /* Red */ 
+.button4 {background-color: #e7e7e7; color: black;} /* Gray */ 
+.button5 {background-color: #555555;} /* Black */</style>
+
+
+
+  <button class="button" (click)="goBack()">Buy It Now</button>
+  <button class="button2" (click)="save()">Add to Cart</button>
+
+  
+  
