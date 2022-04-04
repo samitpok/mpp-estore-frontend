@@ -1,12 +1,28 @@
-<app-product-search></app-product-search>
+<!-- <app-product-search></app-product-search> -->
 <h2>Shop</h2>
 
-<div class="products-menu">
+<!-- <div class="products-menu">
   <a *ngFor="let product of products"
       routerLink="/detail/{{product.id}}">
 
       {{product.name}} &#36;{{product.price}} <img [src]="product.imageurl" width="150">
+      <button class="btn btn-primary" (click)=addtocart(product)>Add to cart</button>
   </a>
-</div>
+</div> -->
+
+<div class="container">
+  <div class="row">
+      <ng-container *ngFor="let product of products ">
+          <div class="card col-md-3">
+              <img src="{{product.imageurl}}" alt="">
+              <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{product.name}}</h5>
+              <!-- <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{item.description}}</p> -->
+              <p><strong>Price:</strong> ${{product.price}}</p>
+              <button class="btn btn-primary" (click)=addtocart(product)>Add to cart</button>
+          </div>
+      </ng-container>
+
+  </div>
+</div> 
 
 
