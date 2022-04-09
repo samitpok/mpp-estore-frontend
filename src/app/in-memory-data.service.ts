@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { InMemoryDbService } from 'angular-in-memory-web-api';
+// import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Product } from './product';
 
 @Injectable({
   providedIn: 'root',
 })
-export class InMemoryDataService implements InMemoryDbService {
+export class InMemoryDataService {//implements InMemoryDbService {
   createDb() {
     const products = [
       { id: 11, name: 'Mobile', price:100, imageurl:"https://www.sellcell.com/assets/images/devices/006/iphone-7.jpg" ,description:"iphone 8, 250GB"},
