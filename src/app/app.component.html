@@ -9,7 +9,36 @@
 
 
 <div id="app">
-  <nav class="navbar navbar-expand navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a href="#" class="navbar-brand">
+            <span>Mpp Store</span>
+        </a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav">
+              <a href="/home" class="nav-link" routerLink="/home">Home </a>  
+              <a href="/addproduct" class="nav-link" routerLink="/addproduct" *ngIf="showUploadProduct">Add Product </a>
+              <!-- <a href="/user" class="nav-link"  routerLink="user" *ngIf="isLoggedIn">User</a> -->
+              
+            </div>
+            <div class="navbar-nav ms-auto">
+              <button routerLink="cart" class="btn btn-primary">
+                <i style="font-size: 30px;" class="fas fa-cart-plus"></i>
+                <div style="font-size: 10px;" class="badge bg-danger">{{totalItem}}</div>
+              </button>
+              <a href="/profile" class="nav-link disabled" routerLink="profile" *ngIf="isLoggedIn">{{ username }}</a>
+              <a href="/register" class="nav-link" routerLink="register" *ngIf="!isLoggedIn">Sign Up</a>
+              <a href="/login" class="nav-link" routerLink="login" *ngIf="!isLoggedIn">Login</a>  
+              <a href class="nav-link" (click)="logout()" *ngIf="isLoggedIn">LogOut</a>
+            </div>
+        </div>
+    </div>
+  </nav>
+  
+  <!-- <nav class="navbar navbar-expand navbar-dark bg-dark">
     <a href="#" class="navbar-brand">Mpp Shoping</a>
     <ul class="navbar-nav mr-auto" routerLinkActive="active">
       <li class="nav-item">
@@ -41,7 +70,7 @@
         <a href class="nav-link" (click)="logout()">LogOut</a>
       </li>
     </ul>
-  </nav>
+  </nav> -->
 
   <div class="container">
     <router-outlet></router-outlet>
