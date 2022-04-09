@@ -33,6 +33,16 @@ export class ProductService {
       );
   }
 
+  addProduct(name: string, price : number, quantity : number,description:string,imageUrl:string): Observable<any> {
+    return this.http.post(this.productsUrl + 'save', {
+      "name": name,
+      "price":price,
+      "quantity":quantity,
+      "description":description,
+      "imageUrl":imageUrl
+    }, this.httpOptions);
+  }
+
   /** GET product by id. Return `undefined` when id not found */
   getProductNo404<Data>(id: number): Observable<Product> {
     const url = `${this.productsUrl}/?id=${id}`;
@@ -73,12 +83,7 @@ export class ProductService {
   //////// Save methods //////////
 
   /** POST: add a new hero to the server */
-  addProduct(hero: Product): Observable<Product> {
-    return this.http.post<Product>(this.productsUrl, hero, this.httpOptions).pipe(
-      tap((newHero: Product) => this.log(`added product w/ id=${newHero.id}`)),
-      catchError(this.handleError<Product>('addProduct'))
-    );
-  }
+
 
   /** DELETE: delete the product from the server */
   deleteProduct(id: number): Observable<Product> {
@@ -123,4 +128,6 @@ export class ProductService {
   private log(message: string) {
     this.messageService.add(`HeroService: ${message}`);
   }
+
+
 }

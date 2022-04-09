@@ -5,9 +5,6 @@
   <input id="new-hero" #heroName />
 
   <!-- (click) passes input value to add() and then clears the input -->
-  <button type="button" class="add-button" (click)="add(heroName.value); heroName.value=''">
-    Add Product
-  </button>
 </div>
 
 <ul class="heroes">
@@ -20,3 +17,125 @@
       <!-- <button class="btn btn-primary" (click)=addtocart(item)>Add to cart</button> -->
   </li>
 </ul>
+
+<div class="col-md-12">
+  <div class="card card-container">
+    <img
+      id="profile-img"
+      src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+      class="profile-img-card"
+    />
+    <form
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="form-group">
+        <label for="productName">ProductName</label>
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          [(ngModel)]="form.name"
+          required
+          minlength="1"
+          maxlength="20"
+          #name="ngModel"
+        />
+        <div class="alert-danger" *ngIf="name.errors && f.submitted">
+          <div *ngIf="name.errors['required']">ProductName is required</div>
+          <div *ngIf="name.errors['minlength']">
+            Product Name must be at least 1 characters
+          </div>
+          <div *ngIf="name.errors['maxlength']">
+            Product Name  must be at most 20 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="price">price</label>
+        <input
+          type="number"
+          class="form-control"
+          name="price"
+          [(ngModel)]="form.price"
+          required
+          price
+          #price="ngModel"
+        />
+        <div class="alert-danger" *ngIf="price.errors && f.submitted">
+          <div *ngIf="price.errors['required']">Price is required</div>
+          <div *ngIf="price.errors['price']">
+            Email must be a valid email address
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="quantity">quantity</label>
+        <input
+          type="number"
+          class="form-control"
+          name="quantity"
+          [(ngModel)]="form.quantity"
+          required
+          minlength="6"
+          #quantity="ngModel"
+        />
+        <div class="alert-danger" *ngIf="quantity.errors && f.submitted">
+          <div *ngIf="quantity.errors['required']">Quantity is required</div>
+          <div *ngIf="quantity.errors['minlength']">
+            Qunatity must be at least 6 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="description">description</label>
+        <input
+          type="text"
+          class="form-control"
+          name="description"
+          [(ngModel)]="form.description"
+          required
+          minlength="6"
+          #description="ngModel"
+        />
+        <div class="alert-danger" *ngIf="description.errors && f.submitted">
+          <div *ngIf="description.errors['required']">description is required</div>
+          <div *ngIf="description.errors['minlength']">
+            description must be at least 6 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="imageurl">Image</label>
+        <input
+          type="text"
+          class="form-control"
+          name="imageurl"
+          [(ngModel)]="form.imageurl"
+          required
+          minlength="6"
+          #imageurl="ngModel"
+        />
+        <div class="alert-danger" *ngIf="imageurl.errors && f.submitted">
+          <div *ngIf="imageurl.errors['required']">Image is required</div>
+          <div *ngIf="imageurl.errors['minlength']">
+            Image must be at least 6 characters
+          </div>
+        </div>
+      </div>  
+      <div class="form-group">
+        <button class="btn btn-primary btn-block">Add the product</button>
+      </div>
+
+      <div class="alert alert-warning" *ngIf="f.submitted && isProductUploadFailed">
+        Signup failed!<br />{{ errorMessage }}
+      </div>
+    </form>
+
+    <!-- <div class="alert alert-success" *ngIf="isSuccessful">
+      Your registration is successful!
+    </div> -->
+  </div>
+</div>

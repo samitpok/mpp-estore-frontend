@@ -10,6 +10,18 @@ import { ProductService } from '../product.service';
 })
 export class ProductsComponent implements OnInit {
   products: Product[] = [];
+  isProductUploadSuccessful : any;
+  isProductUploadFailed : any;
+
+  form : any = {
+    name : null,
+    price : null,
+    quantity : null,
+    description : null,
+    imageUrl : null
+  }
+
+  errorMessage: any;
 
   constructor(private productService: ProductService) { }
 
@@ -22,18 +34,29 @@ export class ProductsComponent implements OnInit {
     .subscribe(products => this.products = products);
   }
 
-  add(name: string): void {
-    name = name.trim();
-    if (!name) { return; }
-    this.productService.addProduct({ name } as Product)
-      .subscribe(product => {
-        this.products.push(product);
-      });
-  }
 
   delete(product: Product): void {
     this.products = this.products.filter(h => h !== product);
     this.productService.deleteProduct(product.id).subscribe();
   }
 
+  onSubmit(): void {
+    const { name, price, quantity,description,imageUrl } = this.form;
+    
+    this.productService.addProduct(name, price, quantity,description,imageUrl).subscribe({
+      next: data => {
+        console.log("reg subscription")
+        console.log(data);
+        console.log("reg subscription")
+        this.isProductUploadSuccessful = true;
+        this.isProductUploadFailed = false;
+      },
+      error: err => {
+        console.log(err);
+        this.errorMessage = err.error.message;
+   
+      }
+    });
+  }
+    
 }
