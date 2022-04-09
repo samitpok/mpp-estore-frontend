@@ -14,7 +14,7 @@ export class ProductService {
     throw new Error('Method not implemented.');
   }
 
-  private productsUrl = 'api/products';  // URL to web api
+  private productsUrl = 'http://localhost:8080/api/products/'; // URL to web api
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -26,7 +26,7 @@ export class ProductService {
 
   /** GET heroes from the server */
   getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.productsUrl)
+    return this.http.get<Product[]>(this.productsUrl+'getProducts')
       .pipe(
         tap(_ => this.log('fetched products')),
         catchError(this.handleError<Product[]>('getHeroes', []))
