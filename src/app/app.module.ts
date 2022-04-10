@@ -21,6 +21,7 @@ import { HeaderComponent } from './header/header.component';
 import { CartComponent } from './cart/cart.component';
 
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   imports: [
@@ -47,7 +48,8 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
     MessagesComponent,
     ProductSearchComponent,
     HeaderComponent,
-    CartComponent
+    CartComponent,
+    CheckoutComponent
   ],
   providers: [authInterceptorProviders],
   bootstrap: [ AppComponent ]

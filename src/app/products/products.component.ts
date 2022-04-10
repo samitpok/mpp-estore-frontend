@@ -21,7 +21,7 @@ export class ProductsComponent implements OnInit {
     imageUrl : null
   }
 
-  errorMessage: any;
+    errorMessage: any;
 
   constructor(private productService: ProductService) { }
 

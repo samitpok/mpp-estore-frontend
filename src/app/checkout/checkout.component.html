@@ -1,0 +1,127 @@
+<p>checkout-order works!</p>
+<form
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="form-group">
+        <label for="name">Customer Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          [(ngModel)]="form.name"
+          required
+          minlength="3"
+          maxlength="40"
+          #name="ngModel"
+        />
+        <div class="alert-danger" *ngIf="name.errors && f.submitted">
+          <div *ngIf="name.errors['required']">CustomerName is required</div>
+          <div *ngIf="name.errors['minlength']">
+            Customer Name must be at least 3 characters
+          </div>
+          <div *ngIf="name.errors['maxlength']">
+            Customer Name must be at most 40 characters
+          </div>
+        </div>
+      </div>  
+      <div class="form-group">
+        <label for="shippingEmail">ShippingEmail</label>
+        <input
+          type="email"
+          class="form-control"
+          name="shippingEmail"
+          [(ngModel)]="form.shippingEmail"
+          required
+          shippingEmail
+          #shippingEmail="ngModel"
+        />
+        <div class="alert-danger" *ngIf="shippingEmail.errors && f.submitted">
+          <div *ngIf="shippingEmail.errors['required']">shipping email is required</div>
+          <div *ngIf="shippingEmail.errors['price']">
+            Email must be a valid email address
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="shippingAddress">ShippingAddress</label>
+        <input
+          type="text"
+          class="form-control"
+          name="shippingAddress"
+          [(ngModel)]="form.shippingAddress"
+          required
+          minlength="5"
+          #shippingAddress="ngModel"
+        />
+        <div class="alert-danger" *ngIf="shippingAddress.errors && f.submitted">
+          <div *ngIf="shippingAddress.errors['required']">ShippingAddress is required</div>
+          <div *ngIf="shippingAddress.errors['minlength']">
+            Shipping Address must be at least 5 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="buyerEmail">BuyerEmail</label>
+        <input
+          type="email"
+          class="form-control"
+          name="buyerEmail"
+          [(ngModel)]="form.buyerEmail"
+          required
+          minlength="6"
+          #buyerEmail="ngModel"
+        />
+        <div class="alert-danger" *ngIf="buyerEmail.errors && f.submitted">
+          <div *ngIf="buyerEmail.errors['required']">Buyer Email is required</div>
+          <div *ngIf="buyerEmail.errors['minlength']">
+            buyer Email must be at least 6 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="buyerAddress">BuyerAddress</label>
+        <input
+          type="text"
+          class="form-control"
+          name="buyerAddress"
+          [(ngModel)]="form.buyerAddress"
+          required
+          minlength="6"
+          #buyerAddress="ngModel"
+        />
+        <div class="alert-danger" *ngIf="buyerAddress.errors && f.submitted">
+          <div *ngIf="buyerAddress.errors['required']">BuyerAddressis required</div>
+          <div *ngIf="buyerAddress.errors['minlength']">
+            Buyer Address must be at least 6 characters
+          </div>
+        </div>
+      </div>  
+      <div class="form-group">
+        <label for="orderAmount">orderAmount</label>
+        <input
+          type="number"
+          class="form-control"
+          name="orderAmount"
+          [(ngModel)]="form.orderAmount"
+          required
+          minlength="1"
+          #orderAmount="ngModel"
+        />
+        <div class="alert-danger" *ngIf="orderAmount.errors && f.submitted">
+          <div *ngIf="orderAmount.errors['required']">orderAmount is required</div>
+          <div *ngIf="orderAmount.errors['minlength']">
+            orderAmount must be at least 1 product
+          </div>
+        </div>
+      </div> 
+      <div class="form-group">
+        <button class="btn btn-primary btn-block">Submit Order</button>
+      </div>
+
+      <div class="alert alert-warning" *ngIf="f.submitted && isOrderUploadFailed">
+        Submit failed!<br />{{ errorMessage }}
+      </div>
+    </form>
